@@ -75,12 +75,19 @@
 .ventana-inferior{
   display: flex;
   width: 100%;
+  justify-content: center;
+  align-items: center;
 }
 .ventana-superior-izquierda{
   display: flex;
   width: 50%;
+  justify-content: center;
+  align-items: center;
+
 }
 .ventana-superior-derecha{
   display: flex;
   width: 50%;
+  justify-content: center;
+  align-items: center;
 }

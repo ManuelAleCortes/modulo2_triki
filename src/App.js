@@ -1,15 +1,14 @@
-import logo from './logo.svg';
+
 import './App.css';
 import AppLocal from './LocalApp';
 import { useState } from "react";
 function App() {
-  const texto = "reset"
-  const texto1 = "Proximo simbolo  "
-  const texto2 = "X"
-  const texto3 = "ganador?"
+  const texto = "Reset"
+  const texto1 = "Proximo simbolo:  "
   const [cuadros, setCuadros] = useState(["-", "-", "-", "-", "-", "-", "-", "-", "-"]);
   const [totalClics, setTotalClics] = useState(0);
   const [simbolo1, setSimbolo] = useState("X");
+  //const [gameEnded, setGameEnded] = useState(false);
 
   const lines = [
     [0, 1, 2],
@@ -23,19 +22,20 @@ function App() {
   ];
 
   const handleClick = (index) => {
+    setTotalClics(totalClics + 1);
   if (cuadros[index] === "-") {
     const newCuadros = [...cuadros];
     newCuadros[index] = (totalClics % 2 === 0) ? "X" : "O";
     setCuadros(newCuadros);
     setTotalClics(totalClics + 1);
-    if (totalClics % 2 != 0){
+    if (totalClics % 2 !== 0){
       setSimbolo("X")
     }else{
       setSimbolo("O")
     }
     console.log({totalClics})
   }
-  setTotalClics(totalClics + 1);
+  
   
 };
 const calculateWinner = (squares) => {
@@ -66,12 +66,12 @@ const calculateWinner = (squares) => {
               <span>{texto}</span>
           </button>
           <div className='ventana-superior-derecha'>
-          <span>{texto1}{simbolo1}</span>
+            <span>{texto1}{simbolo1}</span>
           </div>
         </div>
-        <AppLocal cuadros={cuadros} handleClick={handleClick}/>
+        <AppLocal cuadros={cuadros} handleClick={handleClick} />
         <div className='ventana-inferior'>
-        <span>{status}</span>
+          <span>{status}</span>
         </div>
       </div>
     </div>
